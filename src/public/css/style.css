@@ -40,3 +40,14 @@ body {
     border : 1px solid black;
     text-decoration: none;
   }
+  .create-user-container{
+    padding: 15px;
+    text-align: center;
+  }
+  .create-user-container label{
+    display: block;
+  }
+  .create-user-container .btn-submit{
+    margin-top: 15px;
+    cursor: pointer;
+  }
