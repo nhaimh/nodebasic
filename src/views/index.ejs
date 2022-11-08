@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Node.JS basic</title>
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
     <body>
@@ -36,19 +36,26 @@
                                 <td><%= dataUser[i].id %></td>
                                     <td><%= dataUser[i].firstName %></td>
                                         <td><%= dataUser[i].lastName %></td>
-                                            <td>
+                                            <td class="td">
                                                 <a href="/detail/user/<%=
                                                     dataUser[i].id %>"
                                                     target="_blank"
                                                     class="b">Detail</a>
-                                                <a href="/edit/user/<%=
+                                                <form action="/edit-user/<%=
                                                     dataUser[i].id %>"
-                                                    target="_blank"
-                                                    class="b">Edit</a>
-                                                <a href="/delete/user/<%=
-                                                    dataUser[i].id %>"
-                                                    target="_blank"
-                                                    class="b">Delete</a>
+                                                    method="GET">
+                                                    <button type="submit"
+                                                        class="bt">Edit</button>
+                                                </form>
+                                                <form action="/delete-user"
+                                                    method="POST">
+                                                    <input type="text" hidden
+                                                        value="<%=
+                                                        dataUser[i].id %>"
+                                                    name="userId" />
+                                                    <button type="submit"
+                                                        class="bt">Delete</button>
+                                                </form>
                                             </td>
                                         </tr>
                                         <% } %>
