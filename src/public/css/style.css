@@ -35,9 +35,9 @@ body {
     color: white;
   }
   .b {
-    padding: 8px;
+    padding: 5px;
     border-radius: 10px;
-    border : 1px solid black;
+    border : 2px solid black;
     text-decoration: none;
   }
   .create-user-container{
@@ -55,7 +55,7 @@ body {
     border-radius: 10px;
   }
   .td{
-    display: flex;
+    display: block;
   }
 
 
@@ -70,4 +70,11 @@ body {
   .btn-save{
     margin-top: 15px;
     cursor: pointer;
+  }
+  .upload-flle-container {
+    padding: 15px;
+
+  }
+  .upload-flle-container label {
+    display: block;
   }

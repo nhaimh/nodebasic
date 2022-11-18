@@ -1,3 +1,4 @@
+import multer from "multer";
 import pool from "../configs/connectDB";
 
 let getHomePage = async (req, res) => {
@@ -14,7 +15,6 @@ let getDetailPage = async (req, res) => {
 };
 
 let createNewUser = async (req, res) => {
-  console.log("check req :", req.body);
   let { firstName, lastName, email, address } = req.body;
   await pool.execute(
     "insert into users(firstName,lastName,email,address) values(?,?,?,?) ",
@@ -44,6 +44,29 @@ let postUpdateUser = async (req, res) => {
   return res.send("update user ");
 };
 
+let getUploadPage = async (req, res) => {
+  return res.render("uploadFile.ejs");
+};
+
+const upload = multer().single("profile_pic");
+
+let handleUploadFile = async (req, res) => {
+  // 'profile_pic' is the name of our file input field in the HTML form
+  console.log(req.file);
+  upload(req, res, function (err) {
+    if (req.fileValidationError) {
+      return res.send(req.fileValidationError);
+    } else if (!req.file) {
+      return res.send("Please select an image to upload");
+    }
+
+    // Display uploaded image for user validation
+    res.send(
+      `You have uploaded this image: <hr/><img src="/image/${req.file.filename}" width="500"><hr /><a href="/upload">Upload another image</a>`
+    );
+  });
+};
+
 module.exports = {
   getHomePage,
   getDetailPage,
@@ -51,4 +74,6 @@ module.exports = {
   deleteUser,
   getEditPage,
   postUpdateUser,
+  getUploadPage,
+  handleUploadFile,
 };
