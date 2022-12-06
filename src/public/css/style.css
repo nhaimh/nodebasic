@@ -1,6 +1,6 @@
 h1{
-    color: red;
-    border: 1px solid green;
+    /* color: red; */
+    /* border: 1px solid green; */
 }
 img{
     width: 100%;
@@ -34,7 +34,7 @@ body {
     background-color: #04AA6D;
     color: white;
   }
-  .b {
+  .b-detail {
     padding: 5px;
     border-radius: 10px;
     border : 2px solid black;
@@ -77,4 +77,13 @@ body {
   }
   .upload-flle-container label {
     display: block;
+  }
+  .upload-flle-container h1 {
+    margin-top: 10px;
+  }
+  hr{
+    border-top: 3px solid #eee !important;
+  }
+  h3{
+    font-style: bold;
   }

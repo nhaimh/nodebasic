@@ -30,6 +30,9 @@ const imageFilter = function (req, file, cb) {
 };
 
 let upload = multer({ storage: storage, fileFilter: imageFilter });
+let upload1 = multer({ storage: storage, fileFilter: imageFilter }).array(
+  "multiple_images"
+);
 
 const intitWebRoute = (app) => {
   router.get("/", homeController.getHomePage);
@@ -49,6 +52,24 @@ const intitWebRoute = (app) => {
   router.get("/about", (req, res) => {
     res.send("dmm");
   });
+  router.post(
+    "/upload-multiple-images",
+    (req, res, next) => {
+      upload1(req, res, (err) => {
+        if (err instanceof multer.MulterError && err.code === "up it thoi") {
+          res.send("up it thoi");
+        } else if (err) {
+          res.send(err);
+        } else {
+          next();
+        }
+      });
+    },
+    homeController.handleUploadMultipleFiles
+    // "/upload-multiple-images",
+    // upload.array("multiple_images", 3),
+    // homeController.handleUploadMultipleFiles
+  );
 
   return app.use("/", router);
 };
